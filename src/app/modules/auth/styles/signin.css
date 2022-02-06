@@ -1,0 +1,66 @@
+ 
+.signin .section-form {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: var(--vh-98);
+ }
+
+ .signin .section-form .form-signin{
+   border: var(--px-1) solid var(--colorBorderPrimary); 
+   padding: var(--px-8);
+   border-radius: var(--px-6);
+   width: 350px;
+ }
+
+ .signin .section-form .form-signin .form-title{
+   text-align: center;
+   color: var(--colorPrimary);
+ }
+
+ .signin .section-form .form-signin .group {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: var(--px-1) solid var(--colorBorderPrimary);  
+   margin: var(--px-8);
+   border-radius: 8px;
+
+ }
+
+ .signin .section-form .form-signin .group input{
+   outline: none; 
+   border: none;
+   padding: var(--px-8);
+   width: 82%;
+ }
+
+ .signin .section-form .form-signin .group .box-icon-password{
+   margin-left: var(--px-12);
+ }
+
+ .signin .section-form .form-signin .group .box-icon-eye{
+    margin-right: var(--px-3);
+    margin-bottom: var(--px-2);
+ }
+
+ .signin .section-form .form-signin .btn-group{
+    display: flex;
+    justify-content: center;
+ }
+
+ .signin .section-form .form-signin button{
+    width: 92%;
+    padding: var(--px-7);
+    border: none;
+    margin-top: var(--px-4);
+    margin-bottom: var(--px-4);
+    border-radius: var(--px-8);
+    cursor: pointer;
+    background-color: var(--colorPrimary);
+    color: #fff;
+ }
+
+ .signin .section-form .form-signin button:hover{
+   background-color: var(--colorPrimaryHover);
+ }
