@@ -3,31 +3,34 @@ import { ActionAuth, Auth } from "../../interfaces/auth/user";
 import { authReducer, initialState } from "./reducer";
 
 const init = () => {
-  const hasData = localStorage.getItem("user"); 
+  const hasData = localStorage.getItem("user");
   const isData = hasData ? true : false;
-  if(isData){
-     return JSON.parse(hasData!);
-  }  
+  if (isData) {
+    return JSON.parse(hasData!);
+  }
   return initialState;
-}
+};
 
-type Props = { children:ReactNode }
+type Props = { children: ReactNode };
 
-type Context = {
-    state: Auth,
-   dispatch: (action:ActionAuth) => void };
- 
+type ContextDispatch = (action: ActionAuth) => void;
+
+type Context = { auth: Auth };
+
 export const MyContextAuth = createContext<Context>({
-   state: { username:"", token:"", roles:[] },
-   dispatch: () => {}
+  auth: { username: "", token: "", roles: [] },
 });
 
-export const AuthContext = ({children}:Props) => {
+export const MyContextAuthDispactch = createContext<ContextDispatch>(() => {});
 
-  const [ state, dispatch ] = useReducer(authReducer, initialState, init);
+export const AuthContext = ({ children }: Props) => {
+  const [ auth, dispatch ] = useReducer(authReducer, initialState, init);
 
-   return( 
-    <MyContextAuth.Provider value={{state, dispatch}}>
-      {children}
-    </MyContextAuth.Provider> );
-}
+  return (
+    <MyContextAuthDispactch.Provider value={dispatch}>
+      <MyContextAuth.Provider value={{ auth }}>
+        {children}
+      </MyContextAuth.Provider>
+    </MyContextAuthDispactch.Provider>
+  );
+};

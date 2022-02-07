@@ -1,29 +1,30 @@
 import "../../styles/signin.css";
 import { MutableRefObject, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../../hooks/auth/useAuth";
+import { useAuthDispatch } from "../../../../hooks/auth/useAuth";
 import { SigninService } from "../../services/signin.service";
-import { authenticated, logout } from "../../../../store/auth/action";
+import { authenticated } from "../../../../store/auth/action";
+import { User } from "../../interfaces/user.interface";
 
 export function SignIn() {
-
   const inputEmail: MutableRefObject<any> = useRef();
   const inputpassword: MutableRefObject<any> = useRef();
 
-  const { dispatch } = useAuth();
+  const dispatch = useAuthDispatch();
   const navigation = useNavigate();
 
   const signIn = () => {
-    const user = {
+    const user: User = {
       email: inputEmail.current.value,
       password: inputpassword.current.value,
     };
 
-    if(user.email === "" && user.password === ""){
-      return; 
+    if (user.email === "" || user.password === "") {
+      return;
     }
-  
+
     const response = SigninService.signIn(user);
+   
     if (response.ok && response.status) {
       localStorage.setItem("user", JSON.stringify(response.data));
       dispatch(authenticated(response.data));
@@ -31,18 +32,11 @@ export function SignIn() {
     }
   };
 
-  const myLogout = () => {
-    localStorage.clear();
-    dispatch(logout({ username:"", token:"", roles:[] }));
-  }
-
   return (
     <div className="signin">
       <section className="section-form">
-      <button onClick={()=>myLogout()}>lo</button>
         <form className="form-signin">
           <div className="form-title">
-           
             <h4>Login</h4>
           </div>
 
@@ -60,7 +54,7 @@ export function SignIn() {
               autoComplete="off"
               autoFocus
               placeholder="Username"
-              ref={inputEmail}              
+              ref={inputEmail}
             />
           </div>
 

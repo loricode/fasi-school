@@ -5,10 +5,10 @@ export const Navbar = () => {
     <nav className="nav-dash">
        <ul>
           <li>
-            <span><Link to="/config" /></span> 
+            <span><Link to="/config" />asaD</span> 
           </li>
           <li>
-            <span><Link to="/config" /></span> 
+            <span><Link to="/config" />ADASDASD</span> 
           </li>
       </ul>
     </nav>

@@ -1,4 +1,4 @@
-import { HttpService } from "../../../services/http.service";
+//import { HttpService } from "../../../services/http.service";
 import { User } from "../interfaces/user.interface";
 
 
@@ -12,7 +12,7 @@ export class SigninService {
          data:{
          username:"angel", 
          token:"sdanoiahfiewerwetgsd34",
-         roles:["student", "teacher"]
+         roles:["admin"]
         }
       }
 
